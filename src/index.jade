@@ -1,0 +1,79 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title The Cost of Logging
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section
+        h1 The Cost of Logging
+        h3 by&nbsp;
+          a(href="http://twitter.com/matteocollina") @matteocollina
+
+      section
+        h3 Most code does not need to go
+        img(src="./images/ludicrous.gif")
+
+      section
+        h3 One last thing.. flamegraphs!
+        img(src="./images/flamegraph.png" style="height: 50%")
+
+      section
+        h3 How to generate them
+        ul
+          li Check out&nbsp;
+            a(href="http://npm.im/perf-sym") perf-sym
+            | &nbsp;and&nbsp;
+            a(href="http://npm.im/stackvis") stackvis
+          li More awesome tooling coming around this..
+          li demo
+
+      section
+        h3 0x
+        ul
+          li Check out&nbsp;
+            a(href="http://npm.im/0x") 0x
+          li
+            b The easiest way to generate flamegraphs!
+
+      section
+        h3 And a fast HTTP load testing tool
+        ul.bullet
+          li Check out&nbsp;
+            a(href="http://npm.im/autocannon") autocannon
+          li It can generate 10% more load than alternatives in C
+          li demo
+
+      section
+        h2 This presentation
+        ul.bullet
+          li
+            a(href="https://mcollina.github.io/the-cost-of-logging").
+              https://mcollina.github.io/the-cost-of-logging
+          li
+            a(href="https://github.com/mcollina/the-cost-of-logging").
+              https://github.com/mcollina/the-cost-of-logging
+
+      section
+        img(src='images/me.png' style="width: 95%")
+        h3
+          a(href='http://github.com/mcollina') http://github.com/mcollina
+
+      section
+        h1 Thanks!
+        a(href="http://nearform.com" style="width: 20%")
+          img(src="./images/nearform.svg")
+        br
+        p If you need help with Node.js
+        br
+        h3 <a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a>
+        h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter
+        h3 <a href="http://www.nearform.com">www.nearform.com</a>
+
+    script(src='build/build.js')
