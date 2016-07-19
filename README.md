@@ -1,5 +1,12 @@
 # The Cost of Logging
 
+## How we realised 
+
+## Why we did it
+
+* talk about NAP 
+* Prior to pino, options weren't great
+
 ## Logging is hard
 
 * Don't roll your own logger!
@@ -25,11 +32,6 @@
 * Faster than other JSON loggers (winston, bunyan)
 * Faster even, then non-JSON low-feature loggers (mithril, debug)
 
-## Why we did it
-
-* talk about NAP 
-* Prior to pino, options weren't great
-
 
 ## Why Pino is fast
 
@@ -49,7 +51,7 @@
 * 0x
 * tracing
 * experience
-* use common modules, then rewrite when they become bottleneck
+* use common modules, then rewrite when they become bottleneck  
 
 ## Pino Philosophy
 

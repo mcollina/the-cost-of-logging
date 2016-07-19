@@ -16,46 +16,179 @@ html
           h1 The Cost of Logging
           h3 by&nbsp;
             a(href="http://twitter.com/matteocollina") @matteocollina
+          h3(style='margin-left:.15em;margin-top: -1em') &&nbsp;&nbsp;
+            a(style="display:inline-block;margin-left: -.03em",href="http://twitter.com/davidmarkclements") @davidmarkclem  
           br
           a(href="http://nearform.com" style="width: 50%; float: right; margin-bottom: -30em;")
             img(src="./images/nearform.svg")
 
       section(data-bespoke-backdrop='london').trans
-        h2(style='margin-left: 50%; text-align: right; width: 30%') This story start in London
+        h2(style='margin-left: 50%; text-align: right; width: 30%') Our story begins in London
+
+      section(data-bespoke-backdrop='nap-mp').trans
+        h2(style='color: #eee') NET-A-PORTER <br> & <br> MR-PORTER
 
       section
+        h1 One issue was logging...
+        h2 But we had nothing to recommend!
+
+      section
+        h2 Results
+        h3 1/3 Servers, 2x throughput, 1/2 latency
+        h4 (TODO - option: Designer illustrate?)
+
+      section
+        h2 Remember
         h3 Most code does not need to go
         img(src="./images/ludicrous.gif")
 
       section
-        h3 One last thing.. flamegraphs!
-        img(src="./images/flamegraph.png" style="height: 50%")
+        h2 The systemic effect of logging
 
       section
-        h3 How to generate them
-        ul
-          li Check out&nbsp;
-            a(href="http://npm.im/perf-sym") perf-sym
-            | &nbsp;and&nbsp;
-            a(href="http://npm.im/stackvis") stackvis
-          li More awesome tooling coming around this..
-          li demo
+        h2 Logging is hard..
+
+      section
+        h2(style='margin-left:-30%') Adapters 
+        h2 of adapters 
+        h2(style='margin-left:25%') of adapters
+
+      section
+        h1 We <br> ♥ <br> JSON \n
+
+      section
+        h1 Pino
+        h2 todo - logo
+
+      section
+        h1 Pino
+        h2 10000 ops — 250ms
+
+      section
+        h1 Pino
+        h2 Bunyan API
+
+      section
+        h1 Pino vs Winston
+        h2 todo - benchmark gif
+
+      section
+        h1 Pino vs Bunyan
+        h2 todo - benchmark gif
+
+      section
+        h1 Secret Sauce(s)
+        h2 todo - sauce backdrop        
+
+      section
+        h1 Secret Sauce
+        h2 Avoid JSON.stringify
+
+      section
+        h1 Secret Sauce
+        h2 %FlattenString
+
+      section
+        h1 Secret Sauce
+        h2 fast-safe-stringify
+
+      section
+        h1 Secret Sauce
+        h2 quick-format
+
+      section
+        h1 Secret Sauce
+        h2 Avoid new Date
+
+      section
+        h1 Extreme Mode
+        h2 We can go faster
+
+      section
+        h1 Extreme Mode
+        h2 10000 logs in 100ms
+
+      section
+        h1 Extreme Mode
+        h2 Trade-off: 4k batching
+
+      section
+        h1 How we discovered
+        h2 The secret sauce
 
       section
         h3 0x
-        ul
-          li Check out&nbsp;
-            a(href="http://npm.im/0x") 0x
-          li
-            b The easiest way to generate flamegraphs!
+        h2 todo - flamegraph gif
 
       section
-        h3 And a fast HTTP load testing tool
-        ul.bullet
-          li Check out&nbsp;
-            a(href="http://npm.im/autocannon") autocannon
-          li It can generate 10% more load than alternatives in C
-          li demo
+        h1 autocannon
+        ul
+          li HTTP load tester
+          li Trival cross platform installation
+          li Generates 10% more load than alternatives in C
+
+      section
+        h1 0x + autocannon
+        h3 todo - screenshot of PR showing 0x discovering JSON.stringify bottleneck - maybe do a demo
+
+      section
+        h1 Pino is more than module
+        h2 It's a way of life
+
+      section
+        h1 Pino Philosophy
+        h2 Absolute minimum overhead
+
+      section
+        h1 Pino Philosophy
+        h2 Rotate your logs yourself!
+
+      section
+        h1 Pino Philosophy
+        h2 Transports are separate processes
+
+      section
+        h1 Pino Philosophy
+        h2 Want better readability? Post-process.
+
+      section
+        h1 Server Integration
+        h2 Hapi, Express, Restify, Koa, core HTTP
+
+      section
+        h1 Hapi
+        h2 todo code example
+
+      section
+        h1 Express
+        h2 todo code example
+
+      section
+        h1 Restify
+        h2 todo code example
+
+      section
+        h1 Koa
+        h2 todo code example
+
+      section
+        h1 http
+        h2 todo code example
+
+      section
+        h1 Cloudwatch Integration
+        h2 todo 
+
+      section
+        h1 ELK Integration
+        h2 todo 
+
+      section
+        h2 Ecosystem impact
+        h3 todo - download graph? maybe as backdrop?
+        h3 apps speeding up for free
+        h3 OSS inspiration - rvagg bole
+        h3 knowledge osmosis
 
       section
         h2 This presentation
