@@ -26,16 +26,16 @@ html
         h2(style='margin-left: 50%; text-align: right; width: 30%') Our story begins in London
 
       section(data-bespoke-backdrop='nap-mp').trans
-        h2(style='color: #eee') NET-A-PORTER <br> & <br> MR-PORTER
+        h2(style='color: #eee; padding-left: 40%; padding-bottom: 50%') NET-A-PORTER <br> & <br> MR-PORTER
+
+      section
+        h2 Results
+        br
+        img(src="./images/barchart.png" style="height: 70%")
 
       section
         h1 One issue was logging...
         h2 But we had nothing to recommend!
-
-      section
-        h2 Results
-        h3 1/3 Servers, 2x throughput, 1/2 latency
-        h4 (TODO - option: Designer illustrate?)
 
       section
         h2 Remember
@@ -45,8 +45,8 @@ html
       section
         h2 The systemic effect of logging
 
-      section
-        h2 Logging is hard..
+      section(data-bespoke-backdrop='snail').trans
+        h1(style="color: white; margin-left: -10%; margin-right: auto; width: 10%; text-align: left; padding-bottom: 5%") Why so slow?
 
       section(data-bespoke-backdrop='adapters').trans
         h2(style='margin-left:-30%') Adapters 
@@ -60,19 +60,28 @@ html
         h1 We <br> ♥ <br> JSON \n
 
       section
-        img(src="./images/split2.png")
-
         pre
           code.language-javascript.
             const split = require('split2')
             process.stdin.pipe(split(JSON.parse))
-              .on('data', (chunk) => {
-                console.log(Object.keys(chunk))
+              .on('data', (obj) => {
+                console.log(Object.keys(obj))
               })
+        br
+        img(src="./images/split2.png")
+
 
       section
-        h1 Pino
-        h2 todo - logo
+        img(src="./images/pino.png" style="width: 90%")
+
+      section
+        pre
+          code.language-javascript.
+            const pino = require('pino')()
+            pino.info('hello world')
+            pino.debug({
+              big: 'object'
+            }, 'with message')
 
       section
         h1 Pino
@@ -111,19 +120,37 @@ html
 
       section
         h1 Secret Sauce
-        h2 Avoid new Date
+        h2
+          | Date.now()
+          br
+          | vs
+          br
+          | new Date().toISOString()
 
-      section
-        h1 Extreme Mode
-        h2 We can go faster
+      section(data-bespoke-backdrop='extreme' style="color: white").trans
+        div(style="text-align: right")
+          h1 Extreme Mode
+          h2 We can go faster
 
       section
         h1 Extreme Mode
         h2 10000 logs in 100ms
+        h2 2x throughput increase
 
       section
         h1 Extreme Mode
         h2 Trade-off: 4k batching
+
+      section
+        pre
+          code.language-javascript.
+            const pino = require('pino')({
+              extreme: true
+            })
+            pino.info('hello world')
+            pino.debug({
+              big: 'object'
+            }, 'with message')
 
       section
         h1 How we discovered
@@ -144,9 +171,11 @@ html
         h1 0x + autocannon
         h3 todo - screenshot of PR showing 0x discovering JSON.stringify bottleneck - maybe do a demo
 
-      section
-        h1 Pino is more than module
-        h2 It's a way of life
+      section(data-bespoke-backdrop='wv').trans
+        h2(style="margin-top: -20%") Pino is more than module
+
+      section(data-bespoke-backdrop='wv').trans
+        h2(style="margin-top: -20%") Pino is a way of life
 
       section
         h1 Pino Philosophy
