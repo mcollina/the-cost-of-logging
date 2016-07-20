@@ -43,6 +43,39 @@ html
         img(src="./images/ludicrous.gif")
 
       section
+        h2 The more you log the better
+        img(src="./images/shifu.png" style="heigth: 100%; margin-bottom: -1%")
+
+      section
+        h2
+          | Perceived time spent
+          br
+          | logging a line
+        h1 0 ms
+
+      section
+        h2
+          | Actual time spent
+          br
+          | logging a line
+        h1 0.22 ms
+        // node is single threaded!
+
+      section
+        h3 target 2000 req/s
+        h3 0.22 ms x 2000 req = 440 ms
+        h2 600 ms left for processing
+
+      section
+        h3 target 2000 req/s
+        h3 10 lines per request
+        h3 0.22 ms x 2000 req x 10 lines =
+        h2 4400 ms > 1 s
+
+      section
+        img(src="./images/kaboom.gif")
+
+      section
         h2 The systemic effect of logging
 
       section(data-bespoke-backdrop='snail').trans
@@ -86,6 +119,17 @@ html
       section
         h1 Pino
         h2 10000 ops — 250ms
+
+      section
+        h3 target 2000 req/s
+        h3 0.025 ms x 2000 req = 50 ms
+        h2 950 ms left for processing
+
+      section
+        h3 target 2000 req/s
+        h3 10 lines per request
+        h3 0.025 ms x 2000 req x 10 lines =
+        h2 500 ms left for processing
 
       section
         h1 Pino
@@ -136,6 +180,12 @@ html
         h1 Extreme Mode
         h2 10000 logs in 100ms
         h2 2x throughput increase
+
+      section
+        h3 target 2000 req/s
+        h3 10 lines per request
+        h3 0.01 ms x 2000 req x 10 lines = 200 ms
+        h2 800 ms left for processing
 
       section
         h1 Extreme Mode
