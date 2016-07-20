@@ -48,13 +48,27 @@ html
       section
         h2 Logging is hard..
 
-      section
+      section(data-bespoke-backdrop='adapters').trans
         h2(style='margin-left:-30%') Adapters 
         h2 of adapters 
         h2(style='margin-left:25%') of adapters
+        h2(style='margin-left:50%; font-size: 1em') of adapters
+        h2(style='margin-left:75%; font-size: 0.5em') of adapters
+        h2(style='margin-left:90%; font-size: 0.2em') of adapters
 
       section
         h1 We <br> ♥ <br> JSON \n
+
+      section
+        img(src="./images/split2.png")
+
+        pre
+          code.language-javascript.
+            const split = require('split2')
+            process.stdin.pipe(split(JSON.parse))
+              .on('data', (chunk) => {
+                console.log(Object.keys(chunk))
+              })
 
       section
         h1 Pino
@@ -76,9 +90,8 @@ html
         h1 Pino vs Bunyan
         h2 todo - benchmark gif
 
-      section
-        h1 Secret Sauce(s)
-        h2 todo - sauce backdrop        
+      section(data-bespoke-backdrop='dragon-scroll').trans
+        h1(style="color: white; padding-top: 50%") Secret Sauce(s)
 
       section
         h1 Secret Sauce
