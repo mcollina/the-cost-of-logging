@@ -34,17 +34,13 @@ html
         img(src="./images/barchart.png" style="height: 70%")
 
       section
-        h1 One issue was logging...
-        h2 But we had nothing to recommend!
-
-      section
-        h2 Remember
-        h3 Most code does not need to go
-        img(src="./images/ludicrous.gif")
+        h1 Observation
+        h2 Disabling logging 
+        h2 increased throughput
 
       section
         h2 The more you log the better
-        img(src="./images/shifu.png" style="heigth: 100%; margin-bottom: -1%")
+        img(src="./images/shifu.png" style="margin-bottom: -1%")
 
       section
         h2
@@ -62,14 +58,15 @@ html
         // node is single threaded!
 
       section
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em') One Log Per Request
         h3 target 2000 req/s
         h3 0.22 ms x 2000 req = 440 ms
-        h2 600 ms left for processing
+        h2 660 ms left for processing
 
       section
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em') Ten Logs Per Request
         h3 target 2000 req/s
-        h3 10 lines per request
-        h3 0.22 ms x 2000 req x 10 lines =
+        h3 0.22 ms x 2000 req x 10 logs = 4400ms
         h2 4400 ms > 1 s
 
       section
@@ -95,10 +92,14 @@ html
 
       section(data-bespoke-backdrop='lamp').trans
         h2(style="color: white; margin-left: auto; margin-right: 0%; width: 30%; text-align: right; padding-bottom: 5%")
-          | Let's write a new logger!
+          | Let's write a <u><i>fast</i></u> logger!
 
       section
         img(src="./images/pino.png" style="width: 90%")
+
+      section
+        h1 Pino
+        h2 Bunyan API
 
       section
         pre
@@ -124,11 +125,21 @@ html
         h3 0.025 ms x 2000 req x 10 lines =
         h2 500 ms left for processing
 
-      section(data-bespoke-backdrop='tools').trans
-        h2(style="color: white") How do we log?
+      section
+        h1 Pino vs Winston
+        h2 todo - benchmark gif
 
       section
-        h1 We <br> ♥ <br> JSON \n
+        h1 Pino vs Bunyan
+        h2 todo - benchmark gif
+
+      section(data-bespoke-backdrop='tools').trans
+        h1(style="color: white;margin-top: -40%") Tools <br>of the Trade
+
+      section
+        h1 We 
+        h1(style='color: red;font-size: 7em;margin-bottom: .25em') ♥
+        h1 JSON <span style='color: red'>\n</span>
 
       section
         pre
@@ -141,17 +152,6 @@ html
         br
         img(src="./images/split2.png")
 
-      section
-        h1 Pino
-        h2 Bunyan API
-
-      section
-        h1 Pino vs Winston
-        h2 todo - benchmark gif
-
-      section
-        h1 Pino vs Bunyan
-        h2 todo - benchmark gif
 
       section(data-bespoke-backdrop='dragon-scroll').trans
         h1(style="color: white; padding-top: 50%") Secret Sauce(s)
@@ -222,10 +222,9 @@ html
 
       section
         h1 autocannon
-        ul
-          li HTTP load tester
-          li Trival cross platform installation
-          li Generates 10% more load than alternatives in C
+        h3 HTTP load tester
+        h3 Trival cross platform installation
+        h3 Generates 10% more load than alternatives in C
 
       section
         h1 0x + autocannon
@@ -251,11 +250,14 @@ html
 
       section
         h1 Pino Philosophy
-        h2 Want better readability? Post-process.
+        h2 Want better readability? Post-process 
+        h3 With <code>pino</code> CLI
 
       section
         h1 Server Integration
-        h2 Hapi, Express, Restify, Koa, core HTTP
+
+      section
+        h1 Express Pino Logger Demo
 
       section
         h1 Hapi
@@ -286,11 +288,7 @@ html
         h2 todo 
 
       section
-        h2 Ecosystem impact
-        h3 todo - download graph? maybe as backdrop?
-        h3 apps speeding up for free
-        h3 OSS inspiration - rvagg bole
-        h3 knowledge osmosis
+        h1 Ecosystem Impact
 
       section
         h2 This presentation
