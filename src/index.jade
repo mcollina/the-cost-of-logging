@@ -75,8 +75,8 @@ html
       section
         img(src="./images/kaboom.gif")
 
-      section
-        h2 The systemic effect of logging
+      // section
+      //  h2 The systemic effect of logging
 
       section(data-bespoke-backdrop='snail').trans
         h1(style="color: white; margin-left: -10%; margin-right: auto; width: 10%; text-align: left; padding-bottom: 5%") Why so slow?
@@ -89,20 +89,13 @@ html
         h2(style='margin-left:75%; font-size: 0.5em') of adapters
         h2(style='margin-left:90%; font-size: 0.2em') of adapters
 
-      section
-        h1 We <br> ♥ <br> JSON \n
+      section(data-bespoke-backdrop='lamp').trans
+        h1(style="color: white; margin-left: -10%; margin-right: auto; width: 10%; text-align: left; padding-bottom: 5%")
+          | Idea
 
-      section
-        pre
-          code.language-javascript.
-            const split = require('split2')
-            process.stdin.pipe(split(JSON.parse))
-              .on('data', (obj) => {
-                console.log(Object.keys(obj))
-              })
-        br
-        img(src="./images/split2.png")
-
+      section(data-bespoke-backdrop='lamp').trans
+        h2(style="color: white; margin-left: auto; margin-right: 0%; width: 30%; text-align: right; padding-bottom: 5%")
+          | Let's write a new logger!
 
       section
         img(src="./images/pino.png" style="width: 90%")
@@ -130,6 +123,20 @@ html
         h3 10 lines per request
         h3 0.025 ms x 2000 req x 10 lines =
         h2 500 ms left for processing
+
+      section
+        h1 We <br> ♥ <br> JSON \n
+
+      section
+        pre
+          code.language-javascript.
+            const split = require('split2')
+            process.stdin.pipe(split(JSON.parse))
+              .on('data', (obj) => {
+                console.log(Object.keys(obj))
+              })
+        br
+        img(src="./images/split2.png")
 
       section
         h1 Pino
