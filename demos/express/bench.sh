@@ -11,7 +11,7 @@ node $1 &> /dev/null &
 
 PID=$!
 
-CMD="autocannon -c 100 -p 10 localhost:3000"
+CMD="autocannon -c 100 -p 10 -d 5 localhost:3000"
 
 echo "> $CMD"
 
