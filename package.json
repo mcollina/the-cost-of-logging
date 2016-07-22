@@ -41,6 +41,8 @@
     "normalizecss": "^3.0.0",
     "opn": "^0.1.2",
     "pino": "^2.7.4",
+    "pino-elasticsearch": "^1.0.2",
+    "pino-http": "^1.0.8",
     "reusify": "^1.0.0",
     "steed": "^1.1.1",
     "through": "^2.3.4",
