@@ -60,23 +60,18 @@ html
         h1 0.22 ms
         // node is single threaded!
 
-      section
-        h2(style='margin-bottom: 1.25em;margin-top: -.5em') One Log Per Request
-        h3 target 2000 req/s
-        h3 0.22 ms x 2000 req = 440 ms
-        h2 660 ms left for processing
+      section(style='background:#f5f4f0')
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') One Log Per Request
+        
+        img(src="images/0.22ms-2kreq-1log.png", style='height:90%;margin-left:12%;margin-top: -7.5%;margin-bottom:-5%')
 
-      section
-        h2(style='margin-bottom: 1.25em;margin-top: -.5em') Ten Logs Per Request
-        h3 target 2000 req/s
-        h3 0.22 ms x 2000 req x 10 logs = 4400ms
-        h2 4400 ms > 1 s
+      section(style='background:#f5f4f0')
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
+        
+        img(src="images/0.22ms-2kreq-10logs.png", style='height:90%;margin-left:5%;margin-top: -5%;margin-bottom:-5%')
 
       section
         img(src="./images/kaboom.gif")
-
-      // section
-      //  h2 The systemic effect of logging
 
       section(data-bespoke-backdrop='snail').trans
         h1(style="color: white; margin-left: -10%; margin-right: auto; width: 10%; text-align: left; padding-bottom: 5%") Why so slow?
@@ -117,16 +112,15 @@ html
         h1 Pino
         h2 10000 ops — 250ms
 
-      section
-        h3 target 2000 req/s
-        h3 0.025 ms x 2000 req = 50 ms
-        h2 950 ms left for processing
+      section(style='background:#f5f4f0')
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') One Log Per Request
+        
+        img(src="images/0.025ms-2kreq-1log.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
-      section
-        h3 target 2000 req/s
-        h3 10 lines per request
-        h3 0.025 ms x 2000 req x 10 lines =
-        h2 500 ms left for processing
+      section(style='background:#f5f4f0')
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
+        
+        img(src="images/0.025ms-2kreq-10logs.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
         img(src="./images/bench-basic.svg" style="height: 95%")
@@ -160,15 +154,19 @@ html
 
       section
         h1 Secret Sauce
-        h2 %FlattenString
+        h2(style='margin-bottom: .5em') %FlattenString
+        code.language-bash &nbsp;$ npm install flatstr&nbsp;
+
 
       section
         h1 Secret Sauce
-        h2 fast-safe-stringify
+        h2(style='margin-bottom: .5em') fast-safe-stringify
+        code.language-bash &nbsp;$ npm install fast-safe-stringify&nbsp;
 
       section
         h1 Secret Sauce
-        h2 quick-format
+        h2(style='margin-bottom: .5em') quick-format
+        code.language-bash &nbsp;$ npm install quick-format&nbsp;
 
       section
         h1 Secret Sauce
@@ -189,11 +187,10 @@ html
         h2 10000 logs in 100ms
         h2 2x throughput increase
 
-      section
-        h3 target 2000 req/s
-        h3 10 lines per request
-        h3 0.01 ms x 2000 req x 10 lines = 200 ms
-        h2 800 ms left for processing
+      section(style='background:#f5f4f0')
+        h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
+        
+        img(src="images/0.01ms-2kreq-10logs.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
         h1 Extreme Mode
@@ -215,18 +212,22 @@ html
         h2 The secret sauce
 
       section
-        h3 0x
-        h2 todo - flamegraph gif
+        h1(style='margin-top:-.5em') 0x
+        p(style='padding:0;margin:0;margin-top: -1em;margin-bottom:.5em') 
+          code.language-bash &nbsp;$ npm install 0x&nbsp;
+        img(src='images/0x-demo.gif', style='height:85%')
 
       section
-        h1 autocannon
+        img(src='images/pr.png', style='height:100%')
+
+      section
+        img(src='images/autocannon.png', style='width:100%;margin-bottom:5%;margin-top:-5%')
         h3 HTTP load tester
         h3 Trival cross platform installation
         h3 Generates 10% more load than alternatives in C
 
       section
-        h1 0x + autocannon
-        h3 todo - screenshot of PR showing 0x discovering JSON.stringify bottleneck - maybe do a demo
+        h2(style='font-size: 3.125em') 0x + autocannon = 👌
 
       section(data-bespoke-backdrop='wv').trans
         h2(style="margin-top: -20%") Pino is more than module
@@ -257,27 +258,110 @@ html
           | Server Integration
 
       section
-        h1 Express Pino Logger Demo
+        h1 Hapi
+        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
+        pre
+          code.language-javascript.
+            const Hapi = require('hapi')
+            const server = new Hapi.Server()
+            server.connection({
+              host: 'localhost',
+              port: 3000
+            })
+
 
       section
         h1 Hapi
-        h2 todo code example
+        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
+        pre
+          code.language-javascript.
+            server.route({
+              method: 'GET',
+              path: '/',
+              handler: function (request, reply) {
+                request.log(['a', 'b'], 'Request into hello world')
+                request.logger.info('In handler %s', request.path)
+                return reply('hello world')
+              }
+            })
+
 
       section
-        h1 Express
-        h2 todo code example
+        h1 Hapi
+        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
+        pre
+          code.language-javascript.
+            server.register({
+              register: require('.').register
+            }, (err) => {
+              if (err) { return console.error(err) }
+              server.logger().info('log from server instance')
+              server.start()
+            })
 
       section
-        h1 Restify
-        h2 todo code example
+        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Express
+        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install express-pino-logger&nbsp;
+        pre
+          code(style='position:relative; top:-1em').language-javascript.
+            var app = require('express')()
+            var pino = require('./')()
+
+            app.use(pino)
+
+            app.get('/', function (req, res) {
+              req.log.info('something else')
+              res.send('hello world')
+            })
+
+            app.listen(3000)
 
       section
-        h1 Koa
-        h2 todo code example
+        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Restify
+        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em')  &nbsp;$ npm install restify-pino-logger&nbsp;
+        pre
+          code(style='position:relative; top:-1em').language-javascript.
+            var restify = require('restify')
+            var server = restify.createServer({name: 'app'})
+
+            server.use(require('./')())
+
+            server.get('/', function (req, res) {
+              req.log.info('something else')
+              res.send('hello world')
+            })
+
+            server.listen(3000)
 
       section
-        h1 http
-        h2 todo code example
+        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Koa
+        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em')   &nbsp;$ npm install koa-pino-logger&nbsp;
+        pre
+          code(style='position:relative; top:-1em').language-javascript.
+            var Koa = require('koa')
+            var logger = require('./')
+            var app = new Koa()
+            app.use(logger())
+            app.use((ctx) => {
+              ctx.log.info('something else')
+              ctx.body = 'hello world'
+            })
+            app.listen(3000)
+
+      section
+        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') http
+        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install pino-http&nbsp;
+        pre
+          code(style='position:relative; top:-1em').language-javascript.
+            var http = require('http')
+            var server = http.createServer(handle)
+            var logger = require('./')()
+            function handle (req, res) {
+              logger(req, res)
+              req.log.info('something else')
+              res.end('hello world')
+            }
+            server.listen(3000)
 
       section
         h2 Demo: ELK Integration
@@ -300,19 +384,23 @@ html
               https://github.com/mcollina/the-cost-of-logging
 
       section
-        img(src='images/me.png' style="width: 95%")
+        img(src='images/matteo.png' style="width: 95%")
         h3
           a(href='http://github.com/mcollina') http://github.com/mcollina
+
+      section
+        img(src='images/dave.png' style="width: 95%")
+        h3
+          a(href='http://github.com/davidmarkclements') http://github.com/davidmarkclements
 
       section
         h1 Thanks!
         a(href="http://nearform.com" style="width: 20%")
           img(src="./images/nearform.svg")
         br
-        p If you need help with Node.js
-        br
         h3 <a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a>
-        h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter
+        h3 <a href="mailto:david.clements@nearform.com">david.clements@nearform.com</a>
+        h3 <a href="http://twitter.com/matteocollina">@matteocollina</a> <a href="http://twitter.com/davidmarkclem">@davidmarkclem</a>
         h3 <a href="http://www.nearform.com">www.nearform.com</a>
 
     script(src='build/build.js')
