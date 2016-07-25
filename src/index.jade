@@ -62,12 +62,12 @@ html
 
       section
         h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') One Log Per Request
-        
+
         img(src="images/0.22ms-2kreq-1log.png", style='height:90%;margin-left:12%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
         h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
-        
+
         img(src="images/0.22ms-2kreq-10logs.png", style='height:90%;margin-left:5%;margin-top: -5%;margin-bottom:-5%')
 
       section
@@ -96,6 +96,22 @@ html
         img(src="./images/pino.png" style="width: 90%")
 
       section
+        h1 We
+        h1(style='color: red;font-size: 7em;margin-bottom: .25em') ♥
+        h1 JSON <span style='color: red'>\n</span>
+
+      section
+        pre
+          code.language-javascript.
+            const split = require('split2')
+            process.stdin.pipe(split(JSON.parse))
+              .on('data', (obj) => {
+                console.log(Object.keys(obj))
+              })
+        br
+        img(src="./images/split2.png")
+
+      section
         h1 Pino
         h2 Bunyan API
 
@@ -114,69 +130,16 @@ html
 
       section
         h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') One Log Per Request
-        
+
         img(src="images/0.025ms-2kreq-1log.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
         h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
-        
+
         img(src="images/0.025ms-2kreq-10logs.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
         img(src="./images/bench-basic.svg" style="height: 95%")
-
-      section(data-bespoke-backdrop='tools').trans
-        h1(style="color: white;margin-top: -40%") Tools <br>of the Trade
-
-      section
-        h1 We
-        h1(style='color: red;font-size: 7em;margin-bottom: .25em') ♥
-        h1 JSON <span style='color: red'>\n</span>
-
-      section
-        pre
-          code.language-javascript.
-            const split = require('split2')
-            process.stdin.pipe(split(JSON.parse))
-              .on('data', (obj) => {
-                console.log(Object.keys(obj))
-              })
-        br
-        img(src="./images/split2.png")
-
-
-      section(data-bespoke-backdrop='dragon-scroll').trans
-        h1(style="color: white; padding-top: 50%") Secret Sauce(s)
-
-      section
-        h1 Secret Sauce
-        h2 Avoid JSON.stringify
-
-      section
-        h1 Secret Sauce
-        h2
-          | Date.now()
-          br
-          | vs
-          br
-          | new Date().toISOString()
-
-      section
-        h1 Secret Sauce
-        h2(style='margin-bottom: .5em') %FlattenString
-        code.language-bash &nbsp;$ npm install flatstr&nbsp;
-
-
-      section
-        h1 Secret Sauce
-        h2(style='margin-bottom: .5em') fast-safe-stringify
-        code.language-bash &nbsp;$ npm install fast-safe-stringify&nbsp;
-
-      section
-        h1 Secret Sauce
-        h2(style='margin-bottom: .5em') quick-format
-        code.language-bash &nbsp;$ npm install quick-format&nbsp;
-
 
       section(data-bespoke-backdrop='extreme' style="color: white").trans
         div(style="text-align: right")
@@ -190,7 +153,7 @@ html
 
       section
         h2(style='margin-bottom: 1.25em;margin-top: -.5em;position:relative;') Ten Logs Per Request
-        
+
         img(src="images/0.01ms-2kreq-10logs.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
@@ -207,53 +170,6 @@ html
             pino.debug({
               big: 'object'
             }, 'with message')
-
-      section
-        h1 How we discovered
-        h2 The secret sauce
-
-      section
-        h1(style='margin-top:-.5em') 0x
-        p(style='padding:0;margin:0;margin-top: -1em;margin-bottom:.5em') 
-          code.language-bash &nbsp;$ npm install 0x&nbsp;
-        img(src='images/0x-demo.gif', style='height:85%')
-
-      section
-        img(src='images/pr.png', style='height:90%')
-        br
-        a(href="https://github.com/mcollina/pino/pull/2") https://github.com/mcollina/pino/pull/2
-
-      section
-        img(src='images/autocannon.png', style='width:100%;margin-bottom:5%;margin-top:-5%')
-        h3 HTTP load tester
-        h3 Trival cross platform installation
-        h3 Generates 10% more load than alternatives in C
-
-      section
-        h2(style='font-size: 3.125em') 0x + autocannon = 👌
-
-      section(data-bespoke-backdrop='wv').trans
-        h2(style="margin-top: -20%") Pino is more than module
-
-      section(data-bespoke-backdrop='wv').trans
-        h2(style="margin-top: -20%") Pino is a way of life
-
-      section
-        h1 Pino Philosophy
-        h2 Absolute minimum overhead
-
-      section
-        h1 Pino Philosophy
-        h2 Rotate your logs yourself!
-
-      section
-        h1 Pino Philosophy
-        h2 Transports are separate processes
-
-      section
-        h1 Pino Philosophy
-        h2 Want better readability? Post-process
-        h3 With <code>pino</code> CLI
 
       section(data-bespoke-backdrop='integration').trans
         // big thing to just do a shadow
@@ -272,7 +188,6 @@ html
               port: 3000
             })
 
-
       section
         h1 Hapi
         code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
@@ -287,7 +202,6 @@ html
                 return reply('hello world')
               }
             })
-
 
       section
         h1 Hapi
@@ -365,6 +279,87 @@ html
               res.end('hello world')
             }
             server.listen(3000)
+
+
+      section(data-bespoke-backdrop='dragon-scroll').trans
+        h1(style="color: white; padding-top: 50%") Secret Sauce(s)
+
+      section
+        h1 Secret Sauce
+        h2 Avoid JSON.stringify
+
+      section
+        h1 Secret Sauce
+        h2
+          | Date.now()
+          br
+          | vs
+          br
+          | new Date().toISOString()
+
+      section
+        h1 Secret Sauce
+        h2(style='margin-bottom: .5em') %FlattenString
+        code.language-bash &nbsp;$ npm install flatstr&nbsp;
+
+      section
+        h1 Secret Sauce
+        h2(style='margin-bottom: .5em') fast-safe-stringify
+        code.language-bash &nbsp;$ npm install fast-safe-stringify&nbsp;
+
+      section
+        h1 Secret Sauce
+        h2(style='margin-bottom: .5em') quick-format
+        code.language-bash &nbsp;$ npm install quick-format&nbsp;
+
+      section(data-bespoke-backdrop='tools').trans
+        h1(style="color: white;margin-top: -40%") Tools <br>of the Trade
+
+      section
+        h1(style='margin-top:-.5em') 0x
+        p(style='padding:0;margin:0;margin-top: -1em;margin-bottom:.5em')
+          code.language-bash &nbsp;$ npm install 0x&nbsp;
+        img(src='images/0x-demo.gif', style='height:85%')
+
+      section
+        img(src='images/pr.png', style='height:90%')
+        br
+        a(href="https://github.com/mcollina/pino/pull/2") https://github.com/mcollina/pino/pull/2
+
+      section
+        img(src='images/autocannon.png', style='width:100%;margin-bottom:5%;margin-top:-5%')
+        h3 HTTP load tester
+        h3 Trival cross platform installation
+        h3 Generates 10% more load than alternatives in C
+
+      section
+        h2(style='font-size: 3.125em') 0x + autocannon = 👌
+
+      section
+        h2(style='font-size: 3.125em') Demo
+
+      section(data-bespoke-backdrop='wv').trans
+        h2(style="margin-top: -20%") Pino is more than module
+
+      section(data-bespoke-backdrop='wv').trans
+        h2(style="margin-top: -20%") Pino is a way of life
+
+      section
+        h1 Pino Philosophy
+        h2 Absolute minimum overhead
+
+      section
+        h1 Pino Philosophy
+        h2 Rotate your logs yourself!
+
+      section
+        h1 Pino Philosophy
+        h2 Want better readability? Post-process
+        h3 With <code>pino</code> CLI
+
+      section
+        h1 Pino Philosophy
+        h2 Transports are separate processes
 
       section
         h2 Demo: ELK Integration
