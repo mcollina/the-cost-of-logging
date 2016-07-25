@@ -154,6 +154,15 @@ html
 
       section
         h1 Secret Sauce
+        h2
+          | Date.now()
+          br
+          | vs
+          br
+          | new Date().toISOString()
+
+      section
+        h1 Secret Sauce
         h2(style='margin-bottom: .5em') %FlattenString
         code.language-bash &nbsp;$ npm install flatstr&nbsp;
 
@@ -168,14 +177,6 @@ html
         h2(style='margin-bottom: .5em') quick-format
         code.language-bash &nbsp;$ npm install quick-format&nbsp;
 
-      section
-        h1 Secret Sauce
-        h2
-          | Date.now()
-          br
-          | vs
-          br
-          | new Date().toISOString()
 
       section(data-bespoke-backdrop='extreme' style="color: white").trans
         div(style="text-align: right")
