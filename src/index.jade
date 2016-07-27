@@ -193,6 +193,19 @@ html
         code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
         pre
           code.language-javascript.
+            server.register({
+              register: require('hapi-pino').register
+            }, (err) => {
+              if (err) { return console.error(err) }
+              server.logger().info('log from server instance')
+              server.start()
+            })
+
+      section
+        h1 Hapi
+        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
+        pre
+          code.language-javascript.
             server.route({
               method: 'GET',
               path: '/',
@@ -204,25 +217,12 @@ html
             })
 
       section
-        h1 Hapi
-        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
-        pre
-          code.language-javascript.
-            server.register({
-              register: require('.').register
-            }, (err) => {
-              if (err) { return console.error(err) }
-              server.logger().info('log from server instance')
-              server.start()
-            })
-
-      section
         h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Express
         code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install express-pino-logger&nbsp;
         pre
           code(style='position:relative; top:-1em').language-javascript.
             var app = require('express')()
-            var pino = require('./')()
+            var pino = require('express-pino-logger')()
 
             app.use(pino)
 
@@ -241,7 +241,7 @@ html
             var restify = require('restify')
             var server = restify.createServer({name: 'app'})
 
-            server.use(require('./')())
+            server.use(require('restify-pino-logger')())
 
             server.get('/', function (req, res) {
               req.log.info('something else')
@@ -256,7 +256,7 @@ html
         pre
           code(style='position:relative; top:-1em').language-javascript.
             var Koa = require('koa')
-            var logger = require('./')
+            var logger = require('koa-pino-logger')
             var app = new Koa()
             app.use(logger())
             app.use((ctx) => {
@@ -272,7 +272,7 @@ html
           code(style='position:relative; top:-1em').language-javascript.
             var http = require('http')
             var server = http.createServer(handle)
-            var logger = require('./')()
+            var logger = require('pino-http')()
             function handle (req, res) {
               logger(req, res)
               req.log.info('something else')
@@ -297,15 +297,37 @@ html
           br
           | new Date().toISOString()
 
+
       section
         h1 Secret Sauce
         h2(style='margin-bottom: .5em') %FlattenString
         code.language-bash &nbsp;$ npm install flatstr&nbsp;
 
       section
+        pre
+          code.language-javascript.
+            module.exports = function flatstr (s) {
+              Number(s)
+              return s
+            }
+
+      section
         h1 Secret Sauce
         h2(style='margin-bottom: .5em') fast-safe-stringify
         code.language-bash &nbsp;$ npm install fast-safe-stringify&nbsp;
+
+      section
+        pre
+          code.language-javascript.
+            function Circle (val, k, parent) {
+              this.val = val
+              this.k = k
+              this.parent = parent
+            }
+            Circle.prototype.toJSON = function toJSON () {
+              this.parent[this.k] = this.val
+              return '[Circular]'
+            }
 
       section
         h1 Secret Sauce
@@ -314,6 +336,12 @@ html
 
       section(data-bespoke-backdrop='tools').trans
         h1(style="color: white;margin-top: -40%") Tools <br>of the Trade
+
+      section(data-bespoke-backdrop='fire').trans
+        h2(style="color: white; text-shadow: -2px 0 1px black, 0 2px 1px black, 2px 0 1px black, 0 -2px 1px black;")
+          | Flamegraphs
+          // a flamegraph visualizes functions in such a way that
+          // it shows you which ones are taking up the most time
 
       section
         h1(style='margin-top:-.5em') 0x
@@ -325,6 +353,14 @@ html
         img(src='images/pr.png', style='height:90%')
         br
         a(href="https://github.com/mcollina/pino/pull/2") https://github.com/mcollina/pino/pull/2
+
+      section
+        h2 Before
+        img(src='images/fg-pino-before.png' style="width: 95%")
+
+      section
+        h2 After
+        img(src='images/fg-pino-after.png' style="width: 95%")
 
       section
         img(src='images/autocannon.png', style='width:100%;margin-bottom:5%;margin-top:-5%')

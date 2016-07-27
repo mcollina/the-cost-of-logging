@@ -4,3 +4,5 @@ dist
 pdf
 bespoke-theme-*
 .DS_Store
+profile-*
+.__browserify_string_empty.js
