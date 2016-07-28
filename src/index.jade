@@ -178,6 +178,23 @@ html
           | Server Integration
 
       section
+        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Express
+        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install express-pino-logger&nbsp;
+        pre
+          code(style='position:relative; top:-1em').language-javascript.
+            var app = require('express')()
+            var pino = require('express-pino-logger')()
+
+            app.use(pino)
+
+            app.get('/', function (req, res) {
+              req.log.info('something else')
+              res.send('hello world')
+            })
+
+            app.listen(3000)
+
+      section
         h1 Hapi
         code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
         pre
@@ -217,22 +234,6 @@ html
               }
             })
 
-      section
-        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Express
-        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install express-pino-logger&nbsp;
-        pre
-          code(style='position:relative; top:-1em').language-javascript.
-            var app = require('express')()
-            var pino = require('express-pino-logger')()
-
-            app.use(pino)
-
-            app.get('/', function (req, res) {
-              req.log.info('something else')
-              res.send('hello world')
-            })
-
-            app.listen(3000)
 
       section
         h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Restify
@@ -297,7 +298,6 @@ html
           | vs
           br
           | new Date().toISOString()
-
 
       section
         h1 Secret Sauce
@@ -380,6 +380,9 @@ html
 
       section(data-bespoke-backdrop='wv').trans
         h2(style="margin-top: -20%") Pino is a way of life
+        // because it is not only a tool, it encourage you
+        // down a path that leads to performant programming
+        // and avoid the pitfalls of the adapter problem
 
       section
         h1 Pino Philosophy
