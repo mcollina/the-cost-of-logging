@@ -16,8 +16,6 @@ html
           h1 The Cost of Logging
           h3 by&nbsp;
             a(href="http://twitter.com/matteocollina") @matteocollina
-          h3(style='margin-left:.15em;margin-top: -1em') &&nbsp;&nbsp;
-            a(style="display:inline-block;margin-left: -.03em",href="http://twitter.com/davidmarkclem") @davidmarkclem
           br
           a(href="http://nearform.com" style="width: 50%; float: right; margin-bottom: -30em;")
             img(src="./images/nearform.svg")
@@ -178,110 +176,18 @@ html
           | Server Integration
 
       section
-        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Express
-        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install express-pino-logger&nbsp;
-        pre
-          code(style='position:relative; top:-1em').language-javascript.
-            var app = require('express')()
-            var pino = require('express-pino-logger')()
-
-            app.use(pino)
-
-            app.get('/', function (req, res) {
-              req.log.info('something else')
-              res.send('hello world')
-            })
-
-            app.listen(3000)
-
-      section
-        h1 Hapi
-        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
-        pre
-          code.language-javascript.
-            const Hapi = require('hapi')
-            const server = new Hapi.Server()
-            server.connection({
-              host: 'localhost',
-              port: 3000
-            })
-
-      section
-        h1 Hapi
-        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
-        pre
-          code.language-javascript.
-            server.register({
-              register: require('hapi-pino').register
-            }, (err) => {
-              if (err) { return console.error(err) }
-              server.logger().info('log from server instance')
-              server.start()
-            })
-
-      section
-        h1 Hapi
-        code.language-bash &nbsp;$ npm install hapi-pino&nbsp;
-        pre
-          code.language-javascript.
-            server.route({
-              method: 'GET',
-              path: '/',
-              handler: function (request, reply) {
-                request.log(['a', 'b'], 'Request into hello world')
-                request.logger.info('In handler %s', request.path)
-                return reply('hello world')
-              }
-            })
-
-
-      section
-        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Restify
-        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em')  &nbsp;$ npm install restify-pino-logger&nbsp;
-        pre
-          code(style='position:relative; top:-1em').language-javascript.
-            var restify = require('restify')
-            var server = restify.createServer({name: 'app'})
-
-            server.use(require('restify-pino-logger')())
-
-            server.get('/', function (req, res) {
-              req.log.info('something else')
-              res.send('hello world')
-            })
-
-            server.listen(3000)
-
-      section
-        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') Koa
-        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em')   &nbsp;$ npm install koa-pino-logger&nbsp;
-        pre
-          code(style='position:relative; top:-1em').language-javascript.
-            var Koa = require('koa')
-            var logger = require('koa-pino-logger')
-            var app = new Koa()
-            app.use(logger())
-            app.use((ctx) => {
-              ctx.log.info('something else')
-              ctx.body = 'hello world'
-            })
-            app.listen(3000)
-
-      section
-        h1(style='position:absolute;top:0;width:100%;text-align:center;left:0;font-size: 3.5em') http
-        code.language-bash(style='margin-top: 2.5em;margin-bottom: -.25em') &nbsp;$ npm install pino-http&nbsp;
-        pre
-          code(style='position:relative; top:-1em').language-javascript.
-            var http = require('http')
-            var server = http.createServer(handle)
-            var logger = require('pino-http')()
-            function handle (req, res) {
-              logger(req, res)
-              req.log.info('something else')
-              res.end('hello world')
-            }
-            server.listen(3000)
-
+        h2 Sever Integraton
+        ul
+          li
+            a(href="https://www.npmjs.com/package/express-pino-logger") https://www.npmjs.com/package/express-pino-logger
+          li
+            a(href="https://www.npmjs.com/package/hapi-pino") https://www.npmjs.com/package/hapi-pino
+          li
+            a(href="https://www.npmjs.com/package/restify-pino-logger") https://www.npmjs.com/package/restify-pino-logger
+          li
+            a(href="https://www.npmjs.com/package/koa-pino-logger") https://www.npmjs.com/package/koa-pino-logger
+          li
+            a(href="https://www.npmjs.com/package/pino-http") https://www.npmjs.com/package/pino-http
 
       section(data-bespoke-backdrop='dragon-scroll').trans
         h1(style="color: white; padding-top: 50%") Secret Sauce(s)
@@ -305,30 +211,9 @@ html
         code.language-bash &nbsp;$ npm install flatstr&nbsp;
 
       section
-        pre
-          code.language-javascript.
-            module.exports = function flatstr (s) {
-              Number(s)
-              return s
-            }
-
-      section
         h1 Secret Sauce
         h2(style='margin-bottom: .5em') fast-safe-stringify
         code.language-bash &nbsp;$ npm install fast-safe-stringify&nbsp;
-
-      section
-        pre
-          code.language-javascript.
-            function Circle (val, k, parent) {
-              this.val = val
-              this.k = k
-              this.parent = parent
-            }
-            Circle.prototype.toJSON = function toJSON () {
-              this.parent[this.k] = this.val
-              return '[Circular]'
-            }
 
       section
         h1 Secret Sauce
@@ -349,19 +234,6 @@ html
         p(style='padding:0;margin:0;margin-top: -1em;margin-bottom:.5em')
           code.language-bash &nbsp;$ npm install 0x&nbsp;
         img(src='images/0x-demo.gif', style='height:85%')
-
-      section
-        img(src='images/pr.png', style='height:90%')
-        br
-        a(href="https://github.com/mcollina/pino/pull/2") https://github.com/mcollina/pino/pull/2
-
-      section
-        h2 Before
-        img(src='images/fg-pino-before.png' style="width: 95%")
-
-      section
-        h2 After
-        img(src='images/fg-pino-after.png' style="width: 95%")
 
       section
         img(src='images/autocannon.png', style='width:100%;margin-bottom:5%;margin-top:-5%')
@@ -425,11 +297,6 @@ html
         img(src='images/matteo.png' style="width: 95%")
         h3
           a(href='http://github.com/mcollina') http://github.com/mcollina
-
-      section
-        img(src='images/dave.png' style="width: 95%")
-        h3
-          a(href='http://github.com/davidmarkclements') http://github.com/davidmarkclements
 
       section
         h1 Thanks!
