@@ -22,7 +22,7 @@
         <h2 style="color: #eee; padding-left: 40%; padding-bottom: 50%">NET-A-PORTER <br> & <br> MR-PORTER</h2><a style="color: black; display: block; white-space: nowrap; line-height: 0.5em; padding: 0.5em; padding-bottom: 0.7em; background: rgba(255,255,255,0.8) !important; border-radius: 3px" href="http://www.nearform.com/nodecrunch/client-case-study-net-a-porter/">http://www.nearform.com/nodecrunch/client-case-study-net-a-porter</a>
       </section>
       <section>
-        <h2>Results</h2><br><img src="./images/barchart.png" style="height: 70%">
+        <h2>Original Results</h2><br><img src="./images/barchart.png" style="height: 70%">
       </section>
       <section>
         <h1>Observation</h1>
@@ -101,7 +101,12 @@ pino.debug({
       <section>
         <h2 style="margin-bottom: 1.25em;margin-top: -.5em;position:relative;">Ten Logs Per Request</h2><img src="images/0.025ms-2kreq-10logs.png" style="height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%">
       </section>
-      <section><img src="./images/bench-basic.svg" style="height: 95%"></section>
+      <section>
+        <h2>2016</h2><img src="./images/bench-basic.svg" style="height: 95%">
+      </section>
+      <section>
+        <h2>2017</h2><img src="./images/histogram-updated.png" style="height: 95%">
+      </section>
       <section data-bespoke-backdrop="extreme" style="color: white" class="trans">
         <div style="text-align: right">
           <h1>Extreme Mode</h1>
@@ -205,7 +210,7 @@ server.listen(3000)
 var logger = require('koa-pino-logger')
 var app = new Koa()
 app.use(logger())
-app.use((ctx) => {
+app.use(async (ctx) => {
   ctx.log.info('something else')
   ctx.body = 'hello world'
 })
@@ -296,9 +301,6 @@ Circle.prototype.toJSON = function toJSON () {
       <section>
         <h2 style="font-size: 3.125em">0x + autocannon = 👌</h2>
       </section>
-      <section>
-        <h2 style="font-size: 3.125em">Demo</h2>
-      </section>
       <section data-bespoke-backdrop="wv" class="trans">
         <h2 style="margin-top: -20%">Pino is more than module</h2>
       </section>
@@ -322,15 +324,32 @@ Circle.prototype.toJSON = function toJSON () {
         <h3>With <code>pino</code> CLI</h3>
       </section>
       <section>
+        <h2>pino-colada</h2>
+        <h3><a href="https://github.com/lrlna/pino-colada">https://github.com/lrlna/pino-colada</a></h3><img src="images/colada.png" style="width: 90%">
+      </section>
+      <section>
         <h1>Pino Philosophy</h1>
         <h2>Transports are separate processes</h2>
       </section>
       <section>
-        <h2>Demo: ELK Integration</h2>
+        <h2>Demo: ElasticSearch Integration</h2>
         <p><a href="https://github.com/mcollina/pino-elasticsearch" style="white-space: nowrap;">https://github.com/mcollina/pino-elasticsearch</a></p>
       </section>
+      <section><img src="images/pino-eco.png" style="width: 90%"></section>
       <section data-bespoke-backdrop="ecosystem-impact" class="trans">
         <h2 style="margin-top: -20%; color: white; text-shadow: 0px 0px 4px black">Ecosystem Impact</h2>
+      </section>
+      <section>
+        <h2>Node 8.2 and Turbofan</h2>
+      </section>
+      <section>
+        <h2>2016</h2><img src="./images/bench-basic.svg" style="height: 95%">
+      </section>
+      <section>
+        <h2>2017</h2><img src="./images/histogram-updated.png" style="height: 95%">
+      </section>
+      <section>
+        <h2>Turbofan</h2><img src="./images/histogram-turbofan.png" style="height: 95%">
       </section>
       <section>
         <h2>This presentation</h2>
@@ -341,6 +360,10 @@ Circle.prototype.toJSON = function toJSON () {
               </a></li>
         </ul>
       </section>
+      <section data-bespoke-backdrop="ncb" class="trans">
+        <h1 style="color:white;text-shadow: 2px 2px 10px #666;">Node Cookbook</h1>
+        <h2 style="color:white;text-shadow: 2px 2px 10px #666;">Third Edition</h2>
+      </section>
       <section><img src="images/matteo.png" style="width: 95%">
         <h3><a href="http://github.com/mcollina">http://github.com/mcollina</a></h3>
       </section>
@@ -348,7 +371,8 @@ Circle.prototype.toJSON = function toJSON () {
         <h3><a href="http://github.com/davidmarkclements">http://github.com/davidmarkclements</a></h3>
       </section>
       <section>
-        <h1>Thanks!</h1><a href="http://nearform.com" style="width: 20%"><img src="./images/nearform.svg"></a><br>
+        <h1>Thanks!</h1><a href="http://nearform.com" style="width: 20%"><img src="./images/nearform.svg"></a>
+        <h3>We are hiring JavaScript developers</h3><br>
         <h3><a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a></h3>
         <h3><a href="mailto:david.clements@nearform.com">david.clements@nearform.com</a></h3>
         <h3><a href="http://twitter.com/matteocollina">@matteocollina</a> <a href="http://twitter.com/davidmarkclem">@davidmarkclem</a></h3>
