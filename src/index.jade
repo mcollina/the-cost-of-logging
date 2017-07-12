@@ -30,7 +30,7 @@ html
         a(style="color: black; display: block; white-space: nowrap; line-height: 0.5em; padding: 0.5em; padding-bottom: 0.7em; background: rgba(255,255,255,0.8) !important; border-radius: 3px" href="http://www.nearform.com/nodecrunch/client-case-study-net-a-porter/") http://www.nearform.com/nodecrunch/client-case-study-net-a-porter
 
       section
-        h2 Results
+        h2 Original Results
         br
         img(src="./images/barchart.png" style="height: 70%")
 
@@ -140,7 +140,12 @@ html
         img(src="images/0.025ms-2kreq-10logs.png", style='height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%')
 
       section
+        h2 2016
         img(src="./images/bench-basic.svg" style="height: 95%")
+
+      section
+        h2 2017
+        img(src="./images/histogram-updated.png" style="height: 95%")
 
       section(data-bespoke-backdrop='extreme' style="color: white").trans
         div(style="text-align: right")
@@ -261,7 +266,7 @@ html
             var logger = require('koa-pino-logger')
             var app = new Koa()
             app.use(logger())
-            app.use((ctx) => {
+            app.use(async (ctx) => {
               ctx.log.info('something else')
               ctx.body = 'hello world'
             })
@@ -372,9 +377,6 @@ html
       section
         h2(style='font-size: 3.125em') 0x + autocannon = 👌
 
-      section
-        h2(style='font-size: 3.125em') Demo
-
       section(data-bespoke-backdrop='wv').trans
         h2(style="margin-top: -20%") Pino is more than module
 
@@ -398,18 +400,41 @@ html
         h3 With <code>pino</code> CLI
 
       section
+        h2 pino-colada
+        h3
+          a(href="https://github.com/lrlna/pino-colada") https://github.com/lrlna/pino-colada
+        img(src="images/colada.png" style="width: 90%")
+
+      section
         h1 Pino Philosophy
         h2 Transports are separate processes
 
       section
-        h2 Demo: ELK Integration
+        h2 Demo: ElasticSearch Integration
         p
           a(href="https://github.com/mcollina/pino-elasticsearch" style="white-space: nowrap;")
             | https://github.com/mcollina/pino-elasticsearch
 
+      section
+        img(src="images/pino-eco.png" style="width: 90%")
 
       section(data-bespoke-backdrop='ecosystem-impact').trans
         h2(style="margin-top: -20%; color: white; text-shadow: 0px 0px 4px black") Ecosystem Impact
+
+      section
+        h2 Node 8.2 and Turbofan
+
+      section
+        h2 2016
+        img(src="./images/bench-basic.svg" style="height: 95%")
+
+      section
+        h2 2017
+        img(src="./images/histogram-updated.png" style="height: 95%")
+
+      section
+        h2 Turbofan
+        img(src="./images/histogram-turbofan.png" style="height: 95%")
 
       section
         h2 This presentation
@@ -420,6 +445,10 @@ html
           li
             a(href="https://github.com/mcollina/the-cost-of-logging").
               https://github.com/mcollina/the-cost-of-logging
+
+      section(data-bespoke-backdrop='ncb').trans
+        h1(style='color:white;text-shadow: 2px 2px 10px #666;') Node Cookbook
+        h2(style='color:white;text-shadow: 2px 2px 10px #666;') Third Edition
 
       section
         img(src='images/matteo.png' style="width: 95%")
@@ -435,6 +464,7 @@ html
         h1 Thanks!
         a(href="http://nearform.com" style="width: 20%")
           img(src="./images/nearform.svg")
+        h3 We are hiring JavaScript developers
         br
         h3 <a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a>
         h3 <a href="mailto:david.clements@nearform.com">david.clements@nearform.com</a>
