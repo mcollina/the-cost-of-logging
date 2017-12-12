@@ -11,13 +11,13 @@
       <section data-bespoke-backdrop="pines" class="transwhite">
         <div style="text-align: left; margin-top: -2em;">
           <h1>The Cost of Logging</h1>
-          <h3>by&nbsp;<a href="http://twitter.com/matteocollina">@matteocollina</a></h3>
-          <h3 style="margin-left:.15em;margin-top: -1em">&&nbsp;&nbsp;<a style="display:inline-block;margin-left: -.03em" href="http://twitter.com/davidmarkclem">@davidmarkclem</a></h3><br><a href="http://nearform.com" style="width: 50%; float: right; margin-bottom: -30em;"><img src="./images/nearform.svg"></a>
+          <h3>by&nbsp;<a href="http://twitter.com/matteocollina">@matteocollina</a></h3><br><a href="http://nearform.com" style="width: 50%; float: right; margin-bottom: -30em;"><img src="./images/nearform.svg"></a>
         </div>
       </section>
       <section data-bespoke-backdrop="london" class="trans">
         <h2 style="margin-left: 50%; text-align: right; width: 30%">Our story begins in London</h2>
       </section>
+      <section class="trans"><img src="./images/node-logo.png" style="width: 80%"></section>
       <section data-bespoke-backdrop="nap-mp" class="trans">
         <h2 style="color: #eee; padding-left: 40%; padding-bottom: 50%">NET-A-PORTER <br> & <br> MR-PORTER</h2><a style="color: black; display: block; white-space: nowrap; line-height: 0.5em; padding: 0.5em; padding-bottom: 0.7em; background: rgba(255,255,255,0.8) !important; border-radius: 3px" href="http://www.nearform.com/nodecrunch/client-case-study-net-a-porter/">http://www.nearform.com/nodecrunch/client-case-study-net-a-porter</a>
       </section>
@@ -101,12 +101,6 @@ pino.debug({
       <section>
         <h2 style="margin-bottom: 1.25em;margin-top: -.5em;position:relative;">Ten Logs Per Request</h2><img src="images/0.025ms-2kreq-10logs.png" style="height:90%;margin-left:10%;margin-top: -7.5%;margin-bottom:-5%">
       </section>
-      <section>
-        <h2>2016</h2><img src="./images/bench-basic.svg" style="height: 95%">
-      </section>
-      <section>
-        <h2>2017</h2><img src="./images/histogram-updated.png" style="height: 95%">
-      </section>
       <section data-bespoke-backdrop="extreme" style="color: white" class="trans">
         <div style="text-align: right">
           <h1>Extreme Mode</h1>
@@ -157,8 +151,7 @@ app.listen(3000)
       <section>
         <h1>Hapi</h1><code class="language-bash">&nbsp;$ npm install hapi-pino&nbsp;</code>
         <pre><code class="language-javascript">const Hapi = require('hapi')
-const server = new Hapi.Server()
-server.connection({
+const server = Hapi.server({
   host: 'localhost',
   port: 3000
 })
@@ -166,27 +159,25 @@ server.connection({
       </section>
       <section>
         <h1>Hapi</h1><code class="language-bash">&nbsp;$ npm install hapi-pino&nbsp;</code>
-        <pre><code class="language-javascript">server.register({
-  register: require('hapi-pino').register
-}, (err) => {
-  if (err) { return console.error(err) }
-  server.logger().info('log from server instance')
-  server.start()
+        <pre><code class="language-javascript">await server.register({
+  plugin: require('hapi-pino')
+  options: { prettyPrint: true }
 })
+
+await server.start()
+server.logger().info('log from server instance')
 </code></pre>
       </section>
       <section>
         <h1>Hapi</h1><code class="language-bash">&nbsp;$ npm install hapi-pino&nbsp;</code>
         <pre><code class="language-javascript">server.route({
-  method: 'GET',
-  path: '/',
-  handler: function (request, reply) {
+  method: 'GET', path: '/',
+  handler: async function (request, reply) {
     request.log(['a', 'b'], 'Request into hello world')
     request.logger.info('In handler %s', request.path)
-    return reply('hello world')
+    return 'hello world'
   }
 })
-
 </code></pre>
       </section>
       <section>
@@ -284,7 +275,8 @@ Circle.prototype.toJSON = function toJSON () {
       </section>
       <section>
         <h1 style="margin-top:-.5em">0x</h1>
-        <p style="padding:0;margin:0;margin-top: -1em;margin-bottom:.5em"><code class="language-bash">&nbsp;$ npm install 0x&nbsp;</code></p><img src="images/0x-demo.gif" style="height:85%">
+        <p style="padding:0;margin:0;margin-top: -1em;margin-bottom:.5em"><code class="language-bash">&nbsp;$ npm install 0x&nbsp;</code></p>
+        <video src="images/demo.mp4" preload="auto" style="height: 85%" controls></video>
       </section>
       <section><img src="images/pr.png" style="height:90%"><br><a href="https://github.com/mcollina/pino/pull/2">https://github.com/mcollina/pino/pull/2</a></section>
       <section>
@@ -340,17 +332,157 @@ Circle.prototype.toJSON = function toJSON () {
         <h2 style="margin-top: -20%; color: white; text-shadow: 0px 0px 4px black">Ecosystem Impact</h2>
       </section>
       <section>
-        <h2>Node 8.2 and Turbofan</h2>
+        <h2>2016 with Node 6</h2><img src="./images/bench-basic.svg" style="height: 95%">
       </section>
       <section>
-        <h2>2016</h2><img src="./images/bench-basic.svg" style="height: 95%">
+        <h2>2017 with Node 6</h2><img src="./images/histogram-updated.png" style="height: 95%">
       </section>
       <section>
-        <h2>2017</h2><img src="./images/histogram-updated.png" style="height: 95%">
+        <h2>2017 with Node 8.2+</h2><img src="./images/histogram-turbofan.png" style="height: 95%">
+      </section>
+      <section data-bespoke-backdrop="next" class="trans">
+        <h1 style="color: white">The next big overhead?</h1><br><br><br><br><br>
+      </section>
+      <section><img src="images/core-vs-express.png" style="height: 100%"></section>
+      <section><a href="flamegraph-core.html" target="blank"><img src="images/flamegraph-bare.png" style="width: 90%"></a></section>
+      <section><a href="flamegraph-express.html" target="blank"><img src="images/flamegraph-express.png" style="width: 90%"></a></section>
+      <section><img src="images/fastify.png" style="width: 90%"><br>
+        <h3><a href="https://github.com/fastify/fastify">https://github.com/fastify/fastify</a></h3>
       </section>
       <section>
-        <h2>Turbofan</h2><img src="./images/histogram-turbofan.png" style="height: 95%">
+        <h2>Features Comparison</h2>
+        <table>
+          <tr>
+            <th class="left">Feature</th>
+            <th>Express</th>
+            <th>Hapi</th>
+            <th><em>Fastify</em></th>
+          </tr>
+          <tr>
+            <td class="left">router</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">middleware</td>
+            <td class="green">&#10004;</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">plugins</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">validation</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">hooks</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">decorators</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">logging</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">async/await</td>
+            <td class="red">&#10060;</td>
+            <td class="green">&#10004;</td>
+            <td class="green">&#10004;</td>
+          </tr>
+          <tr>
+            <td class="left">req/sec</td>
+            <td class="red">22006</td>
+            <td class="red">20816</td>
+            <td class="green">34389</td>
+          </tr>
+        </table>
       </section>
+      <section>
+        <pre><code class="language-javascript">fastify.get('/', {
+  schema: {
+    response: {
+      200: {
+        type: 'object',
+        properties: { hello: { type: 'string' } }
+      }
+    }
+  }
+}, (req, reply) => {
+  reply.send({ hello: 'world' })
+})
+</code></pre>
+      </section>
+      <section><img src="images/core-vs-express-vs-fastify.png" style="height: 100%"></section>
+      <section><a href="flamegraph-fastify-simple.html" target="blank"><img src="images/flamegraph-fastify-simple.png" style="width: 90%"></a></section>
+      <section>
+        <pre><code class="language-javascript">'use strict'
+const fastify = require('fastify')()
+
+fastify.get('/', function (req, reply) {
+  reply.send({ hello: 'world' })
+})
+
+fastify.listen(3000)
+</code></pre>
+      </section>
+      <section><img src="images/build-run.png" style="width: 100%"></section>
+      <section>
+        <h2>Serialization</h2><img src="images/fast-json-stringify.png" style="height: 90%">
+      </section>
+      <section>
+        <h2>fast-json-stringify</h2>
+        <ul class="bullet">
+          <li>schema-based JSON rendering</li>
+          <li>generates code based on the schema</li>
+          <li>new Function(), but it is safe</li>
+        </ul>
+      </section>
+      <section>
+        <pre><code class="language-javascript">require('http').createServer(handle).listen(3000)
+
+var stringify = require('fast-json-stringify')({
+  type: 'object',
+  properties: { hello: { type: 'string' } }
+})
+
+function handle (req, res) {
+  res.setHeader('Content-Type', 'application/json')
+  res.end(stringify({ hello: 'world' }))
+}
+</code></pre>
+      </section>
+      <section><img src="images/bare-fjs.png" style="height: 100%"></section>
+      <section>
+        <h2>Adding an HTTP router</h2>
+        <ul class="bullet">
+          <li><a href="https://github.com/delvedor/find-my-way">https://github.com/delvedor/find-my-way</a></li>
+          <li>avoid closure allocation</li>
+          <li>built on a radix-tree</li>
+          <li>safe</li>
+        </ul>
+      </section>
+      <section>
+        <h2>routing</h2><img src="images/find-my-way-bench.png" style="height: 90%"><a href="https://github.com/delvedor/router-benchmark">https://github.com/delvedor/router-benchmark</a>
+      </section>
+      <section><img src="./images/pino.png" style="width: 90%"></section>
+      <section><img src="images/fastify.png" style="width: 90%"></section>
       <section>
         <h2>This presentation</h2>
         <ul class="bullet">
@@ -367,15 +499,11 @@ Circle.prototype.toJSON = function toJSON () {
       <section><img src="images/matteo.png" style="width: 95%">
         <h3><a href="http://github.com/mcollina">http://github.com/mcollina</a></h3>
       </section>
-      <section><img src="images/dave.png" style="width: 95%">
-        <h3><a href="http://github.com/davidmarkclements">http://github.com/davidmarkclements</a></h3>
-      </section>
       <section>
-        <h1>Thanks!</h1><a href="http://nearform.com" style="width: 20%"><img src="./images/nearform.svg"></a>
+        <h1>Thanks!</h1><a href="http://nearform.com" style="width: 40%"><img src="./images/nearform.svg"></a><br>
         <h3>We are hiring JavaScript developers</h3><br>
         <h3><a href="mailto:matteo.collina@nearform.com">matteo.collina@nearform.com</a></h3>
-        <h3><a href="mailto:david.clements@nearform.com">david.clements@nearform.com</a></h3>
-        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a> <a href="http://twitter.com/davidmarkclem">@davidmarkclem</a></h3>
+        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a></h3>
         <h3><a href="http://www.nearform.com">www.nearform.com</a></h3>
       </section>
     </article>
